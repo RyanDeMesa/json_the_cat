@@ -10,10 +10,11 @@ const fetchBreedDescription = function(breedName, callback) {
       }
       const data = JSON.parse(body);
       if (data.length === 0) {
-        console.log("Requested breed is not found. Please check spelling");
+        callback(null, "Requested breed is not found. Please check spelling");
+        return;
       }
       try {
-        console.log(data[0].description);
+        callback(null, data[0].description);
       } catch (err) {
         callback(err, null);
       }
